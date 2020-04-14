@@ -43,6 +43,24 @@ export default {
     }
 }
 
+jQuery(function($){
+  var ua = navigator.userAgent;
+  if ( ua.indexOf( 'iPhone' ) > 0 || ua.indexOf( 'iPad' ) > 0) {
+    // iPhoneまたはiPadの場合
+    $('.about').css({
+      // プロパティ名にハイフンが入っている場合は''で囲む
+      'background-attachment': 'scroll',
+    });
+    $('.work').css({
+      // プロパティ名にハイフンが入っている場合は''で囲む
+      'background-attachment': 'scroll',
+    });
+    $('.blog').css({
+      // プロパティ名にハイフンが入っている場合は''で囲む
+      'background-attachment': 'scroll',
+    });
+  }
+});
 </script>
 
 <style scoped>
@@ -188,7 +206,6 @@ main {
 }
 
 .about {
-    -webkit-appearance: none;
     width: 100vw;
     height: 100vh;
     background-image: url("../assets/a-top.jpg");
@@ -217,7 +234,6 @@ main {
 }
 
 .work {
-    -webkit-appearance: none;
     width: 100vw;
     height: 100vh;
     background-image: url("../assets/w-top.jpg");
@@ -251,7 +267,6 @@ main {
 }
 
 .blog {
-    -webkit-appearance: none;
     width: 100vw;
     height: 100vh;
     background-image: url("../assets/b-top.jpg");

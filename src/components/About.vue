@@ -22,6 +22,16 @@
 </template>
 
 <script>
+jQuery(function($){
+  var ua = navigator.userAgent;
+  if ( ua.indexOf( 'iPhone' ) > 0 || ua.indexOf( 'iPad' ) > 0) {
+    // iPhoneまたはiPadの場合
+    $('.about').css({
+      // プロパティ名にハイフンが入っている場合は''で囲む
+      'background-attachment': 'scroll',
+    });
+  }
+});
 </script>
 
 <style scoped>
