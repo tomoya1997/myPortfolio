@@ -90,6 +90,7 @@
     margin: 10;
 }
 .body {
+    -webkit-appearance: none;
     min-height: 100vh;
     width: 100%;
     color: white;

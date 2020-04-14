@@ -57,6 +57,7 @@
     height: 10rem;
 }
 .about {
+    -webkit-appearance: none;
     width: 100vw;
     min-height: 100vh;
     color: white;

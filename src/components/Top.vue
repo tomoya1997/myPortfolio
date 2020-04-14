@@ -188,6 +188,7 @@ main {
 }
 
 .about {
+    -webkit-appearance: none;
     width: 100vw;
     height: 100vh;
     background-image: url("../assets/a-top.jpg");
@@ -216,6 +217,7 @@ main {
 }
 
 .work {
+    -webkit-appearance: none;
     width: 100vw;
     height: 100vh;
     background-image: url("../assets/w-top.jpg");
@@ -249,6 +251,7 @@ main {
 }
 
 .blog {
+    -webkit-appearance: none;
     width: 100vw;
     height: 100vh;
     background-image: url("../assets/b-top.jpg");

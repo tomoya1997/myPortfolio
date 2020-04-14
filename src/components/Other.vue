@@ -42,6 +42,7 @@
     font-size: 2vh;
 }
 .main {
+    -webkit-appearance: none;
     width: 100vw;
     min-height: 100vh;
     color: white;
