@@ -40,38 +40,11 @@
 </template>
 
 <script>
-$(function(){
-    $(".btn-gnavi").on("click", function(){
-        // ハンバーガーメニューの位置を設定
-        var rightVal = 0;
-        $(".menu a").on("click", function(){
-          var button = document.getElementsByClassName("btn-gnavi");
-          rightVal = -100 + "%";
-          $(button).removeClass("open");
-          $("#global-navi").stop().animate({
-          right: rightVal
-          }, 200);
-        });
-        if($(this).hasClass("open")) {
-            // 位置を移動させメニューを開いた状態にする
-            rightVal = -100 + "%";
-            console.log(this);
-            // メニューを開いたら次回クリック時は閉じた状態になるよう設定
-            $(this).removeClass("open");
-        } else {
-            // メニューを開いたら次回クリック時は閉じた状態になるよう設定
-            $(this).addClass("open");
-        }
- 
-        $("#global-navi").stop().animate({
-            right: rightVal
-        }, 200);
-    });
-});
 export default {
   name: 'App',
   data() {
     return {
+      isMenuOpen: false,
       transition: {
         enter: '',
         leave: '',
@@ -79,16 +52,63 @@ export default {
       },
     };
   },
+  mounted() {
+    this.setupMenuHandlers();
+  },
   methods: {
-        scrollTop: function(){
-            window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-            });
-        }
-    }
+    setupMenuHandlers() {
+      const btnGnavi = document.querySelector('.btn-gnavi');
+      const globalNavi = document.getElementById('global-navi');
+      const menuLinks = document.querySelectorAll('.menu a');
 
-};
+      if (btnGnavi && globalNavi) {
+        btnGnavi.addEventListener('click', () => {
+          this.toggleMenu();
+        });
+
+        menuLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            this.closeMenu();
+          });
+        });
+      }
+    },
+    toggleMenu() {
+      const btnGnavi = document.querySelector('.btn-gnavi');
+      const globalNavi = document.getElementById('global-navi');
+      
+      if (this.isMenuOpen) {
+        this.closeMenu();
+      } else {
+        this.openMenu();
+      }
+    },
+    openMenu() {
+      const btnGnavi = document.querySelector('.btn-gnavi');
+      const globalNavi = document.getElementById('global-navi');
+      
+      this.isMenuOpen = true;
+      btnGnavi.classList.add('open');
+      globalNavi.style.transition = 'right 0.2s ease';
+      globalNavi.style.right = '0';
+    },
+    closeMenu() {
+      const btnGnavi = document.querySelector('.btn-gnavi');
+      const globalNavi = document.getElementById('global-navi');
+      
+      this.isMenuOpen = false;
+      btnGnavi.classList.remove('open');
+      globalNavi.style.transition = 'right 0.2s ease';
+      globalNavi.style.right = '-100%';
+    },
+    scrollTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  }
+}
 </script>
 
 <style>
