@@ -1,30 +1,29 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Top from '@/components/Top'
-import Work from '@/components/Work'
-import About from '@/components/About'
-import Other from '@/components/Other'
+import { createRouter, createWebHistory } from 'vue-router'
+import Top from '@/components/Top.vue'
+import Work from '@/components/Work.vue'
+import About from '@/components/About.vue'
+import Other from '@/components/Other.vue'
 
-Vue.use(Router)
+const routes = [
+  {
+    path: '/',
+    component: Top
+  },
+  {
+    path: '/about',
+    component: About
+  },
+  {
+    path: '/work',
+    component: Work
+  },
+  {
+    path: '/other',
+    component: Other
+  }
+]
 
-export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      component: Top
-    },
-    {
-      path: '/about',
-      component: About
-    },
-    {
-      path: '/work',
-      component: Work
-    },
-    {
-      path: '/other',
-      component: Other
-    }
-  ]
+export default createRouter({
+  history: createWebHistory(),
+  routes
 })
